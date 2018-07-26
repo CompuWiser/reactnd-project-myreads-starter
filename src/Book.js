@@ -12,8 +12,11 @@ class Book extends React.Component {
     this.props.updateShelf(this.props.book, evt.target.value);
   }
 
+  thumbnail = (imageLink) => imageLink.smallThumbnail ? `url(${imageLink.smallThumbnail})` : "url(http://via.placeholder.com/128x193)";
+
   render() {
     const { title, authors, imageLinks, shelf, id } = this.props.book;
+    let backgroundImage = this.thumbnail(imageLinks);
 
     return (
       <li key={id}>
@@ -24,7 +27,9 @@ class Book extends React.Component {
               {
                 width: 128,
                 height: 193,
-                backgroundImage: `url(${imageLinks.smallThumbnail})`
+                // Be careful with this approach. There as books that do not have thumbnail and 
+                // their imageLinks object will be null.Try checking the object before using it.
+                backgroundImage
               }
             }/>
             <div className="book-shelf-changer">

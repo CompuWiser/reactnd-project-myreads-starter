@@ -35,7 +35,10 @@ class BooksApp extends React.Component {
   }
 
   searchBooksList = (query) => {
-    if (!query.length) return;
+    if (!query.length) {
+      this.clearTheSearchBox();
+      return;
+    }
 
     BooksAPI.search(query)
       .then((newBooks) => {
