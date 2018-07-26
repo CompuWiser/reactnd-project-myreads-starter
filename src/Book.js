@@ -12,7 +12,7 @@ class Book extends React.Component {
     this.props.updateShelf(this.props.book, evt.target.value);
   }
 
-  thumbnail = (imageLink) => imageLink.smallThumbnail ? `url(${imageLink.smallThumbnail})` : "url(http://via.placeholder.com/128x193)";
+  thumbnail = (imageLink) => imageLink ? `url(${imageLink.smallThumbnail})` : "url(http://via.placeholder.com/128x193)";
 
   render() {
     const { title, authors, imageLinks, shelf, id } = this.props.book;
